@@ -11,7 +11,7 @@ namespace DailyPlanner.Services
 {
     public class LoginService : ILoginRepository
     {
-        async Task<UserInfo> ILoginRepository.Login(string username, string password)
+        public async Task<UserInfo> Login(string username, string password)
         {
             try
             {
@@ -19,8 +19,8 @@ namespace DailyPlanner.Services
                 {
                     var userInfo = new UserInfo();
                     var client = new HttpClient();
-                    string url = "http://192.168.1.3:8099/api/UserInfoes/LoginUser/" + username + "/" + password;
-                    client.BaseAddress = new System.Uri(url);
+                    string url = "http://192.168.1.107:8099/api/UserInfoes/LoginUser/" + username + "/" + password;
+                    client.BaseAddress = new Uri(url);
                     HttpResponseMessage response = await client.GetAsync("");
                     if (response.IsSuccessStatusCode)
                     {
