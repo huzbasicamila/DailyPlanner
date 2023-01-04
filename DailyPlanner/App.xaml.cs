@@ -1,8 +1,11 @@
-﻿namespace DailyPlanner;
+﻿using DailyPlanner.Models;
+
+namespace DailyPlanner;
 
 public partial class App : Application
 {
-	public App()
+	public static UserInfo UserInfo;
+    public App()
 	{
 		InitializeComponent();
 

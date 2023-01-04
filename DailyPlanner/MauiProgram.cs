@@ -1,4 +1,7 @@
-﻿namespace DailyPlanner;
+﻿using DailyPlanner.ViewModels;
+using DailyPlanner.Views;
+
+namespace DailyPlanner;
 
 public static class MauiProgram
 {
@@ -13,6 +16,10 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
+		builder.Services.AddSingleton<HomePage>();
+		builder.Services.AddSingleton<LoginPage>();
+
+		builder.Services.AddSingleton<LoginPageViewModel>();
 		return builder.Build();
 	}
 }

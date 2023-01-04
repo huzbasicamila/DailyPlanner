@@ -49,7 +49,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="Aspose.PDF" Version="22.12.0" />
 	  <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
+	  <PackageReference Include="Newtonsoft.Json.Bson" Version="1.0.2" />
 	</ItemGroup>
 
 	<ItemGroup>
