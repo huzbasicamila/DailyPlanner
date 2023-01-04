@@ -1,5 +1,4 @@
-﻿using ABI.System;
-using DailyPlanner.Models;
+﻿using DailyPlanner.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +11,7 @@ namespace DailyPlanner.Services
 {
     public class LoginService : ILoginRepository
     {
-        public async Task<UserInfo> Login(string username, string password)
+        async Task<UserInfo> ILoginRepository.Login(string username, string password)
         {
             try
             {
@@ -20,8 +19,7 @@ namespace DailyPlanner.Services
                 {
                     var userInfo = new UserInfo();
                     var client = new HttpClient();
-                    //string url="http://192.168.61.40:8099/api/UserInfoes/LoginUser/"+username+"/"+password;
-                    string url = "http://192.168.1.107:8099/api/UserInfoes/LoginUser/" + username + "/" + password;
+                    string url = "http://192.168.1.3:8099/api/UserInfoes/LoginUser/" + username + "/" + password;
                     client.BaseAddress = new System.Uri(url);
                     HttpResponseMessage response = await client.GetAsync("");
                     if (response.IsSuccessStatusCode)
@@ -31,20 +29,24 @@ namespace DailyPlanner.Services
                         userInfo = await response.Content.ReadFromJsonAsync<UserInfo>();
                         return await Task.FromResult(userInfo);
                     }
+                    else
+                    {
+                        return null;
+                    }
 
                 }
                 else
                 {
                     return null;
                 }
+
             }
-            else
+            catch (System.Exception ex)
             {
-                return null;
-            }
-        } 
-        catch (Exception ex) {
-            throw ex.InnerException;
+                throw ex.InnerException;
+
+            } 
+       
 }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DailyPlanner.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace DailyPlanner.Services
 {
-    internal interface Interface1
+    internal interface ILoginRepository
     {
+        Task<UserInfo> Login(string username, string password);
     }
 }
